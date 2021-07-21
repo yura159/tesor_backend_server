@@ -1,0 +1,1 @@
+web: aiohttp main:app
