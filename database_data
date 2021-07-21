@@ -1,0 +1,8 @@
+{
+      "host": "us-cdbr-east-04.cleardb.com",
+      "user": "b4cc9465aaf186",
+      "password": "0703e96e",
+      "db_name": "heroku_9fc8a0c633de042",
+      "news_table": "news",
+      "admins_table": "admins"
+}

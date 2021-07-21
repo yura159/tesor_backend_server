@@ -1,10 +1,11 @@
 import json
 
-from database import db
+from work_with_db import database
 from aiohttp import web
 from datetime import datetime
 
 routes = web.RouteTableDef()
+db = database()
 
 
 @routes.post('/api/login')
@@ -22,15 +23,19 @@ async def post_news(request):
     json_new = json.dumps({
         "text": data["text"],
         "time": f"{date.day}.{date.month}.{date.year}"})
-    db.add_news(json_new)
+
+    db.add_news(date, data['text'])
     return web.Response(text=json_new, status=200)
 
 
 @routes.get('/api/news')
 async def get_news_list(request):
-    news = db.get_news()
+    result = []
+    for news in db.get_news():
+        dict_news = {'text': news[1], 'time': f"{news[0].day}.{news[0].month}.{news[0].year}"}
+        result.append(dict_news)
     return web.Response(text=json.dumps({
-        "news": news
+        "news": result
     }), status=200)
 
 
