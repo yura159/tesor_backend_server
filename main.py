@@ -7,12 +7,6 @@ from datetime import datetime
 routes = web.RouteTableDef()
 
 
-def main():
-    app = web.Application()
-    app.add_routes(routes)
-    web.run_app(app)
-
-
 @routes.post('/api/login')
 async def login(request):
     data = await request.post()
@@ -39,5 +33,7 @@ async def get_news_list(request):
         "news": news
     }), status=200)
 
-if __name__ == '__main__':
-    main()
+
+app = web.Application()
+app.add_routes(routes)
+web.run_app(app)

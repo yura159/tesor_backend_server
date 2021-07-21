@@ -1,1 +1,1 @@
-web: aiohttp main:app
+web: gunicorn main:app
