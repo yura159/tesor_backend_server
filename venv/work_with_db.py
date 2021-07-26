@@ -1,4 +1,5 @@
 import pymysql
+import json
 
 from ast import literal_eval
 
@@ -21,7 +22,14 @@ class database:
     def get_news(self):
         query = self.con.cursor()
         query.execute(f"select * from {self.news}")
+        self.con.commit()
         return query.fetchall()
+
+    def get_quiz(self):
+        with open('my_quiz', 'r', encoding='UTF-8') as quiz:
+            x = quiz.read() 
+            result = json.dumps(literal_eval(x))
+        return result
 
     def add_news(self, date, news):
         query = self.con.cursor()
@@ -31,4 +39,5 @@ class database:
     def user_exists(self, email, password):
         query = self.con.cursor()
         query.execute(f"select password from {self.admins} where email = '{email}'")
+        self.con.commit()
         return query.fetchall()[0][0] == password

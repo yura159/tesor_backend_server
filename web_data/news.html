@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Signin Template · Bootstrap v5.0</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+	<script type="text/javascript" src="jquery-3.6.0.js"></script>
+	<script type="text/javascript" src="news_scripts.js"></script>
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <link href="css/signin.css" rel="stylesheet">
+  </head>
+  <body class="text-center">
+	<main class="form-signin">
+		<div class="news">
+			<label class="form-label title">Новости</label>
+			<div class="data" id="news-history"></div>
+			<div class="input-news">
+				<label class="enter"> </label>
+				<textarea class="form-control enter-news" placeholder="введите новости" id="text"></textarea>
+				<div class="add-news">
+					<button type="button" class="btn btn-primary" id="enter-data">Отправить</button>
+				</div>
+			</div>
+		</div>
+		
+		<div class="report">
+			<label class="head">Отчет</label>
+			<div class="body">
+				<label class="get-report">Выберите начало периода</label>
+				<input type="date" class="get-report" id="start-period"> </input>
+				<label class="get-report">Выберите конец периода</label>
+				<input type="date" class="get-report" id="end-period"> </input>
+				<textarea class="get-report" placeholder="тут будет ссылка на отчет" id="href-report"></textarea>
+				<button type="button" class="btn btn-primary get-report" id="report-for-the-speriod">Получить отчет</button>
+			</div>
+		</div>
+    <button type="button" class="btn btn-primary" id="in-quiz">К опросу</button>
+	</main>
+  </body>
+</html>
