@@ -41,3 +41,33 @@ class database:
         query.execute(f"select password from {self.admins} where email = '{email}'")
         self.con.commit()
         return query.fetchall()[0][0] == password
+
+    def pull_json(self, json_data: str):
+        query = self.con.cursor()
+        data = json.loads(json_data)['pages']  # Парсим json
+        query.execute(f"DELETE FROM links")
+        query.execute(f"DELETE FROM questions")
+        self.con.commit()
+        query = self.con.cursor()
+        for page in data:
+            columns = ["text", "page_id", "type", "error", "answer_type"]
+            active_columns = [col for col in columns if col in page]
+            fields = ", ".join([f"'{page[field]}'" for field in active_columns])
+            cols = ", ".join([f"{field}" for field in active_columns])
+            query.execute(f"INSERT INTO questions ({cols}) VALUES ({fields});")
+            for answer in page['answer']:
+                columns = ["link", "text"]
+                active_columns = [col for col in columns if col in answer]
+                fields = ", ".join([f"'{answer[field]}'" for field in active_columns])
+                cols = ", ".join([f"{field}" for field in active_columns])
+                fields_ = f"INSERT INTO links (id, {cols}) VALUES" \
+                          f" ('{page['page_id']}', {fields});"
+                query.execute(
+                    fields_)
+        self.con.commit()
+
+
+with open('my_quiz', 'r', encoding='UTF-8') as report:
+    data = report.read()
+db = database()
+db.pull_json(data)
