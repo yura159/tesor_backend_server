@@ -33,7 +33,7 @@ class database:
 
     def add_news(self, date, news):
         query = self.con.cursor()
-        query.execute(f"INSERT INTO {self.news} VALUES ('{date}', '{news}');")
+        query.execute(f"INSERT INTO {self.news} (date_news, news) VALUES ('{date}', '{news}');")
         self.con.commit()
 
     def user_exists(self, email, password):
