@@ -19,7 +19,7 @@ async def create_report(request):
 @routes.post('/api/login')
 async def login(request):
     data = await request.post()
-    if not db.user_exists(data['email'], data['password']):
+    if not await db.user_exists(data['email'], data['password']):
         return web.Response(text=json.dumps({}), status=401)
     return web.Response(text=json.dumps({"auth": "some_auth_key"}), status=200)
 
@@ -31,21 +31,21 @@ async def post_news(request):
     json_new = json.dumps({
         "text": data["text"],
         "time": f"{date.day}.{date.month}.{date.year}"})
-    db.add_news(date, data['text'])
+    await db.add_news(date, data['text'])
     return web.Response(text=json_new, status=200)
 
 
 @routes.post('/api/quiz')
 async def update_quiz(request):
     quiz = await request.post()
-    db.pull_json(quiz['data'])
+    await db.pull_json(quiz['data'])
     return web.Response(text=json.dumps({}), status=200)
 
 
 @routes.get('/api/news')
 async def get_news_list(request):
     result = []
-    for news in db.get_news():
+    for news in await db.get_news():
         dict_news = {'text': news[1], 'time': f"{news[0].day}.{news[0].month}.{news[0].year}"}
         result.append(dict_news)
     return web.Response(text=json.dumps({
@@ -55,7 +55,7 @@ async def get_news_list(request):
 
 @routes.get('/api/quiz')
 async def get_quiz(request):
-    data = db.get_quiz()
+    data = await db.get_quiz()
     return web.Response(text=data, status=200)
 
 
