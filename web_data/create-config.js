@@ -152,7 +152,7 @@ $(document).on('click', '#add-question', function(){
     if (pages_id.length != 0)
         pages_id.push(Math.max.apply(Math, pages_id) + 1);
     else
-        page_id.push(1);
+        pages_id.push(1);
     addQuestion(Math.max.apply(Math, pages_id), '', [], '');
     addOptions(Math.max.apply(Math, pages_id));
 });
