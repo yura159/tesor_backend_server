@@ -1,6 +1,5 @@
 import json
 
-from setuptools.command.rotate import rotate
 from work_with_db import database
 from aiohttp import web
 from datetime import datetime

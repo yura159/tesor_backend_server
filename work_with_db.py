@@ -18,7 +18,6 @@ class database:
         except:
             print('error')
 
-
     def get_news(self):
         query = self.con.cursor()
         query.execute(f"select * from {self.news}")
@@ -27,7 +26,7 @@ class database:
 
     def get_quiz(self):
         with open('my_quiz', 'r', encoding='UTF-8') as quiz:
-            x = quiz.read() 
+            x = quiz.read()
             result = json.dumps(literal_eval(x))
         return result
 
