@@ -173,12 +173,13 @@ $(document).on('click', '.delete-answer', function(){
 $(document).on('change', '.select-question', function(){
     console.log('update seletc');
     var answers = $(this).parent().parent().find('.answers');
-    answers.empty();
     switch($(this).val()){
         case 'Свой ответ':
-                answers.append(freeAnswer);
+                answers.find('.answer-field').remove();
+                answers.append(freeAnswer.format(getOptions(0)));
             break;
         default:
+                answers.find('.free-answer').remove();
                 answers.append(addAnswers([]));
             break;
     }
