@@ -65,9 +65,3 @@ class database:
                 query.execute(
                     fields_)
         self.con.commit()
-
-
-with open('my_quiz', 'r', encoding='UTF-8') as report:
-    data = report.read()
-db = database()
-db.pull_json(data)
