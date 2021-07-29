@@ -75,3 +75,12 @@ $(document).on('click', '#report-for-the-speriod', function(){
 		hrefText.val(data['report']);
 	});
 });
+
+$(document).on('click', '#quiz-page', function(){
+	console.log('new page');
+	$(location).attr('href', "/create-config.html");
+});
+
+$(document).on('click', '#report-page', function(){
+    $(location).attr('href', "/report.html");
+});

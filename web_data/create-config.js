@@ -1,4 +1,5 @@
 pages_id = new Array();
+nameQustions = {};
 dictType = {'Один вариант':2,'Несколько вариантов':3, 'Свой ответ':4};
 freeAnswer = '<div class="free-answer get-answer"><div class="type-answer"><label>Валидация</label>'+
 '<select class="type"><option>Только цифры</option><option>Только буквы</option><option>Свободный</option>'+
@@ -143,11 +144,10 @@ $(document).ready(function(data){
 
 $(document).on('click', '.icon-add-answer', function(){
     console.log('icon add answer is click');
-    $(this).parent()
-            .parent()
-            .parent()   
-            .find('.answers')
-            .append(addAnswers([]));
+    var qustionForm = $(this).parent().parent().parent();
+    if (qustionForm.find('.select-question').val() != 'Свой ответ'){
+            qustionForm.find('.answers').append(addAnswers([]));
+    }
 });
 
 $(document).on('click', '#add-question', function(){
@@ -200,4 +200,12 @@ $(document).on('click', '#save-quiz', function(){
     dfr.done(function(){
         console.log('Quiz add in database');
     });
+});
+
+$(document).on('click', '#news-page', function(){
+    $(location).attr('href', "/news.html");
+});
+
+$(document).on('click', '#report-page', function(){
+    $(location).attr('href', "/report.html");
 });
