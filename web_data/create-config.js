@@ -1,11 +1,13 @@
 pages_id = new Array();
 dictType = {'Один вариант':2,'Несколько вариантов':3, 'Свой ответ':4};
-freeAnswer = '<div class="free-answer question-answer get-answer"><i class="bi bi-fonts icon-select-answer"></i>'+
-'<select><option disabled selected value>Выбирите тип ответа</option><option>Только цифры</option>' +
-'<option>Только буквы</option><option>Свободный</option></select><select class="qust next-question">%s</select></div>';
+freeAnswer = '<div class="free-answer get-answer"><div class="type-answer"><label>Валидация</label>'+
+'<select class="type"><option>Только цифры</option><option>Только буквы</option><option>Свободный</option>'+
+'</select></div><div class="transition"><label>Переход</label><select class="qust next-question">%s</select>'+
+'</div></div>';
 
 cloneAnswer = "<div class='answer-field question-answer get-answer'><input type='text' class='qust answer' value=%s" +
-"><select class='qust next-question'>%s</select><i class='bi bi-eraser-fill delete-answer'></i></div>";
+"><select class='qust next-question'><option class ='head-option' selected value>Переход</option>"+
+"%s</select><i class='bi bi-trash-fill delete-answer'></i></div>";
 
 String.prototype.format = function(){
     var newStr = this, i = 0;
@@ -15,7 +17,7 @@ String.prototype.format = function(){
 };
 
 function getOptions(link){
-    var options = "<option class ='head-option' selected value>Переход</option>";
+    var options ="";
     var selected = "";
     for (var i = 0; i < pages_id.length; ++i){
         if (pages_id[i] == link)
@@ -61,9 +63,10 @@ function createSelectQuestion(selectedIndex, values)
 
 function addQuestion(page_id, text, answer, answer_type){
     var type = ['Один вариант','Несколько вариантов', 'Свой ответ'];
-    var cloneQuestion ='<div class="question-form"><div class="icon-head">' +
-    '<i class="bi bi-trash icon-delete-question"></i></div><div class="qust-field question-answer">' +
-    '<label class="qust question-id">%s</label><textarea class="qust enter-question">%s</textarea>%s</div>';
+    var cloneQuestion ='<div class="question-form"><div class="icon-head">'+
+    '<label class="qust question-id">%s</label><i class="bi bi-trash icon-delete-question">'+ 
+    '</i></div><div class="qust-field question-answer">' +
+    '<textarea class="qust enter-question">%s</textarea>%s</div>';
     cloneQuestion = cloneQuestion.format(page_id, text, createSelectQuestion(answer_type - 2, type));
     var answers = '<div class="answers">';
     if  (type[answer_type - 2]=='Свой ответ'){
@@ -76,7 +79,7 @@ function addQuestion(page_id, text, answer, answer_type){
     }
     answers += '</div>';
     var end = '<div class="icon-answer"><div class="icon add-answer">' +
-    '<i class="bi bi-plus-circle icon-add-answer"> Ответ</i></div></div></div>';
+    '<i class="bi bi-plus-circle icon-add-answer"></i><span> Ответ</span></div></div></div>';
     $('#quiz').append(cloneQuestion + answers + end);
 }
 
@@ -142,7 +145,7 @@ $(document).on('click', '.icon-add-answer', function(){
     console.log('icon add answer is click');
     $(this).parent()
             .parent()
-            .parent()
+            .parent()   
             .find('.answers')
             .append(addAnswers([]));
 });
@@ -180,13 +183,11 @@ $(document).on('change', '.select-question', function(){
             break;
         default:
                 answers.find('.free-answer').remove();
-                answers.append(addAnswers([]));
             break;
     }
 });
 
 $(document).on('click', '#save-quiz', function(){
-
     url = 'api/quiz';
     var dfr =$.ajax({
         type: 'POST',

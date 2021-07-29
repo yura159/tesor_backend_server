@@ -37,31 +37,26 @@
     <link href="signin.css" rel="stylesheet">
   </head>
   <body class="text-center">
-	<main class="form-signin">
-		<div class="news">
-			<label class="form-label title">Новости</label>
-			<div class="data" id="news-history"></div>
-			<div class="input-news">
-				<label class="enter"> </label>
-				<textarea class="form-control enter-news" placeholder="введите новости" id="text"></textarea>
-				<div class="add-news">
-					<button type="button" class="btn btn-primary" id="enter-data">Отправить</button>
-				</div>
-			</div>
-		</div>
-		
-		<div class="report">
-			<label class="head">Отчет</label>
-			<div class="body">
-				<label class="get-report">Выберите начало периода</label>
-				<input type="date" class="get-report" id="start-period"> </input>
-				<label class="get-report">Выберите конец периода</label>
-				<input type="date" class="get-report" id="end-period"> </input>
-				<textarea class="get-report" placeholder="тут будет ссылка на отчет" id="href-report"></textarea>
-				<button type="button" class="btn btn-primary get-report" id="report-for-the-speriod">Получить отчет</button>
-			</div>
-		</div>
-    <button type="button" class="btn btn-primary" id="in-quiz">К опросу</button>
-	</main>
+    <main class="form-signin">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary my-navbar">
+        <a class="navbar-brand" href="#">Tensor</a>     
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <button type="button" class="btn btn-primary" id="news">Новости</button>
+          <button type="button" class="btn btn-primary" id="quiz">Опрос</button>
+          <button type="button" class="btn btn-primary" id="report">Отчет</button>
+        </div>    
+    </nav>
+
+      <div class="news">
+        <div class="data" id="news-history"></div>
+        <div class="input-news">
+          <label class="enter"> </label>
+          <textarea class="form-control enter-news" placeholder="текст новости" id="text"></textarea>
+          <div class="add-news">
+            <button type="button" class="btn btn-primary" id="enter-data">Отправить</button>
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
