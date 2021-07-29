@@ -4,7 +4,6 @@ body {
 }
 
 body {
-  display: flex;
   align-items: center;
   padding-bottom: 40px;
   background-color: #F5F5F5;
@@ -12,42 +11,9 @@ body {
 h1 {
         color: black;
 }
-
-
-
-.form-signin {
-	width: 100%;
-	max-width: 400px; 
-	padding: 15px;
-	margin: auto;
-	color: #fff;
-}
-
-.form-signin .checkbox {
-	font-weight: 400;
-}
-
-.form-signin .form-floating:focus-within {
-	z-index: 2;
-	color: black;
-}
-
-.form-signin input[type="email"] {
-	margin-bottom: -1px;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;	
-}
-
-.form-signin input[type="password"] {
-	margin-bottom: 40px;
-	margin-top: 10px;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
-}
-
 .add-news{
 	padding-top: 10px;
-	text-align: left;
+	text-align: right;
 }
 
 .data{
@@ -59,8 +25,8 @@ h1 {
 }
 
 .news{	
-
-	width: 300px;
+	width: 400px;
+	padding: 10px;
 	display: inline-block;
 }
 
@@ -86,4 +52,9 @@ h1 {
 	width: 200px;
 	margin-top: 20px;
 	margin-bottom: 5px;
+}
+
+
+.nav-item {
+	color: green;
 }

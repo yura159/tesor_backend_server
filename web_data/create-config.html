@@ -6,8 +6,9 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Signin Template · Bootstrap v5.0</title>
-
+    <title>Admin</title>
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
 	  <script type="text/javascript" src="jquery-3.6.0.js"></script>
 	  <script type="text/javascript" src="create-config.js"></script>
@@ -15,43 +16,40 @@
     
 
     <!-- Bootstrap core CSS -->
+	 <link href="create-config.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;  
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-
-    
-    <link href="create-config.css" rel="stylesheet">
   </head>
-  <body class="text-center">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary my-navbar">
-      <a class="navbar-brand" href="#">Tensor</a>     
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <button type="button" class="btn btn-primary" id="news-page">Новости</button>
-        <button type="button" class="btn btn-primary" id="quiz-page">Опрос</button>
-        <button type="button" class="btn btn-primary" id="report-page">Отчет</button>
+  
+	  <body class = "text-center">
+	    
+		
+		
+	<nav class="navbar navbar-expand-lg  bg- my-navbar navbar-light" style="background-color: #6600CC;">
+	
+	<img src="favicon.svg" class="d-inline-block align-top" width="30" height="30" alt=""></a>   
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" style="color: white;" >Admin <span class="sr-only">(current)</span></a>
+      </li>
+<button type="button" class="btn btn-link" style="color: white;" id="news-page" >Новости</button>
+ <button type="button" class="btn btn-link" style="color: white;" id="quiz-page" >Опрос</button>
+ <button type="button" class="btn btn-link" style="color: white;" id="report-page" >Отчет</button>
+    </ul>
+  </div>
+        <div class="save-quiz"> 
+        <button type="button" class="btn btn-success" id="save-quiz" >Сохранить</button>
       </div>
-      <div class="save-quiz"> 
-        <button type="button" class="btn btn-primary" id="save-quiz">Сохранить</button>
-      </div>
-    </nav>
-    <div class="my-quiz" id="quiz">
+</nav>
+
+  <div class="my-quiz" id="quiz">
     </div>
     <div class="button-manager">
-      <button type="button" class="btn btn-primary" id="add-question">Добавить вопрос</button>
+      <button type="button" class="btn btn-primary"  style="background-color: #6600CC;" id="add-question">Добавить вопрос</button>
     </div>
   </body>
 </html>
