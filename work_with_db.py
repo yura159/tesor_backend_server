@@ -60,6 +60,15 @@ class database:
         query.execute(f"INSERT INTO {self.__news} (date_news, news) VALUES ('{date}', '{news}');")
         self.con.commit()
 
+    async def add_uuid(self, uuid):
+        query = self.con.cursor()
+        query.execute(f"INSERT INTO `cookies` (`uuid`) VALUES ({uuid});")
+        self.con.commit()
+    async def get_uuid(self):
+        query = self.con.cursor()
+        query.execute(f"SELECT uuid FROM cookies ORDER BY uuid DESC LIMIT 1;")
+        self.con.commit()
+
     async def user_exists(self, email, password):
         query = self.con.cursor()
         query.execute(f"select password from {self.__admins} where email = '{email}'")
