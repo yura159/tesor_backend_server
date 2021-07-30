@@ -52,7 +52,14 @@ async def get_news_list(request):
         "news": result
     }), status=200)
 
-
+@routes.get('/api/cookie')
+async def cookie(request):
+    data = await db.get_uuid
+    if data is not 0:
+        return web.Response(text=json_new, status=200)
+    else:
+        return web.Response(text=json_new, status=500)
+    
 @routes.get('/api/quiz')
 async def get_quiz(request):
     data = await db.get_quiz()
